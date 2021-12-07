@@ -14,7 +14,7 @@ const btn_save = document.getElementById("btn_save");
 const save_article = article => {
     const articles = app.getArticles();
     
-    articles.articles.push(article);
+    articles.push(article);
     console.log(articles)
 
     app.save_articles(articles);

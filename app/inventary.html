@@ -63,7 +63,7 @@
                                 </tr>
                             </thead>
                             <tbody id="tbody_articles">
-                                
+
                             </tbody>
                         </table>   
                     </div>
@@ -75,9 +75,34 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Articulo Seleccionado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 id="mbody_serial"></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Eliminar</button>
+                    <button type="button" class="btn btn-success">Actualizar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="./src/inventary.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="./src/inventary.js"> </script>
 
 </body>
 </html>

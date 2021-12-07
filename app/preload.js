@@ -6,6 +6,7 @@ const path = require("path");
 const API = {
     getArticles: () => getArticles(),
     save_articles: (articles) => save_articles(articles),
+    delete_one_article: (serial) => delete_one_article(serial),
 }
 
 contextBridge.exposeInMainWorld("app", API);
@@ -20,7 +21,15 @@ function save_articles(articles) {
     const data = JSON.stringify(articles);
     // console.log(data);
     const success = fs.writeFileSync(path.join(__dirname, "./articles.json"), data);
-    ipcRenderer.send('notification', {body: "desde preload send information!"});
+    ipcRenderer.send('notification', "El articulo ingresado se ha guardado correctamente");
+}
+
+function delete_one_article(serial) {
+    const arts = getArticles();
+
+    const fArts = arts.filter(art => art.serial !== serial);
+    save_articles(fArts);
+    ipcRenderer.send('notification', "El articulo Seleccionado se ha eliminado correctamente!");
 }
 
 // {
