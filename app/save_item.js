@@ -55,9 +55,10 @@ btn_save.addEventListener('click', e => {
         amount: document.getElementById("inp_amount").value,
         serial: document.getElementById("inp_serial").value,
         view: document.getElementById("inp_view").value,
-        date: document.getElementById("inp_date").value,
+        lastDate: document.getElementById("inp_date").value,
         state: field_state.innerText
     }
 
     save_article(article);
+    window.location.reload();
 })
