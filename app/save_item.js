@@ -15,8 +15,6 @@ const save_article = article => {
     const articles = app.getArticles();
     
     articles.push(article);
-    console.log(articles)
-
     app.save_articles(articles);
 }
 

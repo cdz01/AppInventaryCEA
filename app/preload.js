@@ -7,6 +7,7 @@ const API = {
     getArticles: () => getArticles(),
     save_articles: (articles) => save_articles(articles),
     delete_one_article: (serial) => delete_one_article(serial),
+    test: () => { ipcRenderer.send('notification', "Testing") }
 }
 
 contextBridge.exposeInMainWorld("app", API);

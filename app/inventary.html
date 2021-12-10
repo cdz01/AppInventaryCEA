@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end mb-3">
-                    <input type="text" id="inp_browse" placeholder="Buscar serial">
+                    <input type="text" id="inp_browse" placeholder="Buscar">
                 </div>
 
                 <div>
@@ -64,6 +64,7 @@
                                     <th scope="col">Cantidad</th>
                                     <th scope="col">Serial</th>
                                     <th scope="col">Observaciones</th>
+                                    <th scope="col">Estado</th>
                                     <th scope="col">Ultimo movimiento</th>
                                 </tr>
                             </thead>
@@ -83,8 +84,8 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Articulo Seleccionado</h5>
@@ -101,35 +102,63 @@
                                     <div class="form-group">
                                         <!-- <input type="text" class="form-control" id="" placeholder="Departamento"> -->
                                         <div class="input-group mb-3">
-                                            <label class="input-group-text" for="inputGroupSelect01">Departamento</label>
-                                            <select class="form-select" id="inputGroupSelect01">
-                                              <option selected>Laboratorio I</option>
-                                              <option value="1">Laboratorio II</option>
-                                              <option value="2">Control de estudio</option>
-                                              <option value="3">Direccion</option>
+                                            <label class="input-group-text" for="inp_mDepartament">Departamento</label>
+                                            <select class="form-select" id="inp_mDepartament">
+                                              <option value="Laboratorio I">Laboratorio I</option>
+                                              <option value="Laboratorio II">Laboratorio II</option>
+                                              <option value="Control de estudio">Control de estudio</option>
+                                              <option value="Direccion">Direccion</option>
                                             </select>
                                           </div>
                                           <div class="input-group mb-3">
-                                            <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
-                                            <select class="form-select" id="inputGroupSelect01">
+                                            <label class="input-group-text" for="inp_mCategory">Categoria</label>
+                                            <select class="form-select" id="inp_mCategory">
                                               <option selected>PC</option>
-                                              <option value="1">Laptop</option>
-                                              <option value="2">Monitor</option>
-                                              <option value="3">Mouse</option>
-                                              <option value="3">Regulador</option>
-                                              <option value="3">Teclado</option>
-                                              <option value="3">Corneta</option>
+                                              <option value="Laptop">Laptop</option>
+                                              <option value="Monitor">Monitor</option>
+                                              <option value="Mouse">Mouse</option>
+                                              <option value="Regulador">Regulador</option>
+                                              <option value="Teclado">Teclado</option>
+                                              <option value="Corneta">Corneta</option>
                                             </select>
                                           </div>
-                                        <input type="text" class="form-control mt-2" id="" placeholder="Marca">
-                                        <input type="text" class="form-control mt-2" id="" placeholder="Modelo">
-                                        <input type="text" class="form-control mt-2" id="" placeholder="Cantidad">
-                                        <input type="text" class="form-control mt-2" id="" placeholder="Serial">
-                                        <input type="text" class="form-control mt-2" id="" placeholder="Observaciones">
-                                        <input type="text" class="form-control mt-2" id="" placeholder="Ultimo Movimiento">
+                                        <div class="form-floating mt-3">
+                                            <input type="text" class="form-control mt-2" id="inp_marca" placeholder="Marca">
+                                            <label for="inp_marca">Marca</label>
+                                        </div>
+                                        <div class="form-floating mt-3">
+                                            <input type="text" class="form-control mt-2" id="inp_model" placeholder="Modelo">
+                                            <label for="inp_model">Modelo</label>
+                                        </div>
+                                        <div class="form-floating mt-3">
+                                            <input type="text" class="form-control mt-2" id="inp_amount" placeholder="Cantidad">
+                                            <label for="inp_amount">Cantidad</label>
+                                        </div>
+                                        <div class="form-floating mt-3">
+                                            <input type="text" class="form-control mt-2" id="inp_serial" placeholder="Serial">
+                                            <label for="inp_serial">Serial</label>
+                                        </div>
+                                        <div class="form-floating mt-3">
+                                            <input type="text" class="form-control mt-2" id="inp_view" placeholder="Observaciones">
+                                            <label for="inp_view">Observaciones</label>
+                                        </div>
+                                        <div class="form-floating mt-3">
+                                            <input type="text" class="form-control mt-2" id="inp_lastDate" placeholder="Ultimo Movimiento">
+                                            <label for="inp_lastDate">Ultimo Movimiento</label>
+                                        </div>
+                                        <div class="form-floating mt-3">
+                                            <input type="text" class="form-control mt-2" id="inp_state" placeholder="Estado">
+                                            <label for="inp_state">Estado</label>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
                                     </div>
                                     <div class="d-flex justify-content-center mt-3">
-                                        <button type="submit" class="btn btn-primary">Modificar!</button>
+                                        <button type="submit" class="btn btn-primary" id="btn_update">Modificar!</button>
                                     </div>
                                 </form>
                             </div>
@@ -149,7 +178,7 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.js"></script>
     <script src="vendor/jquery/jquery.js"></script>
-    <script src="./src/inventary.js"> </script>
+    <script type="module" src="./src/inventary.js"> </script>
 
 </body>
 </html>

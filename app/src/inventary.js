@@ -1,5 +1,9 @@
+import { getData, DataLocalStorage as dls, keys_article } from './Enums.js'
+
 const table_articles = document.querySelector("table");
 const articles = app.getArticles();
+
+const inp_mDepartament = document.querySelector("#inp_mDepartament");
 
 /* FUNCIONALIDADES */
 
@@ -17,17 +21,57 @@ function mClickDelete () {
 }
 
 function mClickUpdate() {
+
+    const btn_update = document.querySelector("#btn_update");
+
+    function extractFromDataToModalForm () {
+        const local_data = getData(dls.article_selected);
+        
+        $(`#inp_mDepartament option[value="${local_data[keys_article.departament]}"]`).attr("selected", true)
+        $(`#inp_mCategory option[value="${local_data[keys_article.category]}"]`).attr("selected", true)
+        $("#inp_marca").val(local_data[keys_article.marca]);
+        $("#inp_model").val(local_data[keys_article.model]);
+        $("#inp_amount").val(local_data[keys_article.amount]);
+        $("#inp_serial").val(local_data[keys_article.serial]);
+        $("#inp_view").val(local_data[keys_article.view]);
+        $("#inp_lastDate").val(local_data[keys_article.lastDate]);
+        $("#inp_state").val(local_data[keys_article.state]);
+    }
+
+    function update_file() {
+
+    }
+    
     $(".btn-success").click(() => {
         $("#form_update").toggle(500);
+        extractFromDataToModalForm();
     })
+
+    document.querySelector("form").addEventListener('submit', e => {
+        e.preventDefault();
+
+        update_article(getData(dls.article_selected));
+    })
+
 }
 
 /* ENCARGADO DE REALIZAR LOS FILTROS */
 function filter_browse() {
     const inp_browse = document.querySelector("#inp_browse");
-
+    
     function handle_browse (e) {
-        const find = articles.filter(art => art.serial == inp_browse.value);
+        const strBrowse = inp_browse.value.toLowerCase();
+        const find = articles.filter(art => 
+                                       art.departament.toLowerCase() === strBrowse
+                                    || art.category.toLowerCase() === strBrowse
+                                    || art.marca.toLowerCase() === strBrowse
+                                    || art.model.toLowerCase() === strBrowse
+                                    || art.amount.toLowerCase() === strBrowse
+                                    || art.serial.toLowerCase() === strBrowse
+                                    || art.view.toLowerCase() === strBrowse
+                                    || art.lastDate.toLowerCase() === strBrowse
+                                    || art.state.toLowerCase() === strBrowse);
+
         if (find) {
             clear_table();
             show_articles(find);
@@ -66,6 +110,7 @@ function show_articles(_arts) {
             const td_serial = document.createElement("td");
             const td_view = document.createElement("td");
             const td_lastDate = document.createElement("td");
+            const td_state = document.createElement("td");
             // type="button" data-bs-toggle="modal" data-bs-target="#modelId"
             // tr.setAttribute("type", "button")
 
@@ -75,13 +120,13 @@ function show_articles(_arts) {
             tr.setAttribute("data-bs-target", "#modelId")
             tr.addEventListener('click', () => handle_click_row({
                 departament: article.departament,
-                category: article.ca,
+                category: article.category,
                 marca: article.marca,
                 model: article.model,
                 amount: article.amount,
                 serial: article.serial,
                 view: article.view,
-                lastDate: article.date,
+                lastDate: article.lastDate,
                 state: article.state
             }));
         
@@ -93,7 +138,8 @@ function show_articles(_arts) {
             td_amount.innerText = article.amount;
             td_serial.innerText = article.serial;
             td_view.innerText = article.view;
-            td_lastDate.innerText = article.date;
+            td_lastDate.innerText = article.lastDate;
+            td_state.innerText = article.state;
             
             tr.append(
                 td_idx,
@@ -104,7 +150,7 @@ function show_articles(_arts) {
                 td_amount,
                 td_serial,
                 td_view,
-                td_view,
+                td_state,
                 td_lastDate
             );
         
@@ -127,20 +173,22 @@ function show_articles(_arts) {
             const td_serial = document.createElement("td");
             const td_view = document.createElement("td");
             const td_lastDate = document.createElement("td");
-            // type="button" data-bs-toggle="modal" data-bs-target="#modelId"
-            // tr.setAttribute("type", "button")
+            const td_state = document.createElement("td");
+
+            td_amount.setAttribute("class", "text-center");
+            
             tr.setAttribute("data-bs-toggle", "modal")
             tr.setAttribute("data-bs-target", "#modelId")
             // tr.addEventListener('click', () => handle_click_row({serial: article.serial}));
             tr.addEventListener('click', () => handle_click_row({
                 departament: article.departament,
-                category: article.ca,
+                category: article.category,
                 marca: article.marca,
                 model: article.model,
                 amount: article.amount,
                 serial: article.serial,
                 view: article.view,
-                lastDate: article.date,
+                lastDate: article.lastDate,
                 state: article.state
             }));
         
@@ -152,7 +200,8 @@ function show_articles(_arts) {
             td_amount.innerText = article.amount;
             td_serial.innerText = article.serial;
             td_view.innerText = article.view;
-            td_lastDate.innerText = article.date;
+            td_lastDate.innerText = article.lastDate;
+            td_state.innerText = article.state;
             
             tr.append(
                 td_idx,
@@ -163,7 +212,7 @@ function show_articles(_arts) {
                 td_amount,
                 td_serial,
                 td_view,
-                td_view,
+                td_state,
                 td_lastDate
             );
         

@@ -1,0 +1,17 @@
+/*  -HEADER-
+    Dev - Carlos Diaz
+    Titular de la Aplicacion Desktop
+    Frontend, Backend
+*/
+
+
+
+/
+**
+-- NEW's --
+
+* Buscador basico removido, nuevo buscador mas eficiente al momento de filtrar
+* funcion actualizar 80% realizado
+* Fixes generales
+
+**/
