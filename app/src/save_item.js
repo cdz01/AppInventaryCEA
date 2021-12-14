@@ -1,5 +1,6 @@
 // const { app } = require("electron");
 
+import { notification_option } from './Enums.js'
 
 const field_departament = document.getElementById("field_departament");
 const field_category = document.getElementById("field_category");
@@ -15,7 +16,7 @@ const save_article = article => {
     const articles = app.getArticles();
     
     articles.push(article);
-    app.save_articles(articles);
+    app.save_articles(articles, notification_option.save);
 }
 
 btn_departamentMenu.forEach(btn => {

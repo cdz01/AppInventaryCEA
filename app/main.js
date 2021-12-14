@@ -25,5 +25,9 @@ app.on("ready", () => {
 })
 
 ipcMain.on('notification', (event, args) => {
-    new Notification({title: "Inventario CEA", body: "El articulo se ha guardado correctamente!"}).show();
+    new Notification({title: "Inventario CEA", body: "Se ha registrado un articulo nuevo"}).show();
+})
+
+ipcMain.on('notification-delete', (event, args) => {
+    new Notification({title: "Inventario CEA", body: "El articulo se ha eliminado correctamente!"}).show();
 })

@@ -29,17 +29,34 @@ function mClickUpdate() {
         
         $(`#inp_mDepartament option[value="${local_data[keys_article.departament]}"]`).attr("selected", true)
         $(`#inp_mCategory option[value="${local_data[keys_article.category]}"]`).attr("selected", true)
+        $(`#inp_mState option[value="${local_data[keys_article.state]}"]`).attr("selected", true)
         $("#inp_marca").val(local_data[keys_article.marca]);
         $("#inp_model").val(local_data[keys_article.model]);
         $("#inp_amount").val(local_data[keys_article.amount]);
         $("#inp_serial").val(local_data[keys_article.serial]);
         $("#inp_view").val(local_data[keys_article.view]);
         $("#inp_lastDate").val(local_data[keys_article.lastDate]);
-        $("#inp_state").val(local_data[keys_article.state]);
+        // $("#inp_state").val(local_data[keys_article.state]);
     }
 
     function update_file() {
+        const data = {
+            departament: $("#inp_mDepartament").val(),
+            category: $("#inp_mCategory").val(),
+            marca: $("#inp_marca").val(),
+            model: $("#inp_model").val(),
+            amount: $("#inp_amount").val(),
+            serial: $("#inp_serial").val(),
+            view: $("#inp_view").val(),
+            lastDate: $("#inp_lastDate").val(),
+            state: $("#inp_mState").val(),
+        }
 
+        const find = articles.filter(art => art.serial !== getData(dls.article_selected).serial);
+        find.push(data);
+
+        app.save_articles(find, 's');
+        
     }
     
     $(".btn-success").click(() => {
@@ -50,9 +67,13 @@ function mClickUpdate() {
     document.querySelector("form").addEventListener('submit', e => {
         e.preventDefault();
 
-        update_article(getData(dls.article_selected));
-    })
+        update_file(getData(dls.article_selected));
 
+        setTimeout(() => {
+            window.location.reload();
+        }, 500);
+    })
+    
 }
 
 /* ENCARGADO DE REALIZAR LOS FILTROS */

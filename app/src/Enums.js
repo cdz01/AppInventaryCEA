@@ -14,6 +14,11 @@ const keys_article = {
     state: "state"
 }
 
+const notification_option = {
+    save: 's',
+    delete: 'd'
+}
+
 function getData(item) {
     return JSON.parse(localStorage.getItem(item));
 }
@@ -22,4 +27,5 @@ export {
     DataLocalStorage,
     getData,
     keys_article,
+    notification_option,
 }

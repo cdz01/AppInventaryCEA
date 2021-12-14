@@ -51,8 +51,8 @@
                     <input type="text" id="inp_browse" placeholder="Buscar">
                 </div>
 
-                <div>
-                    <div class="row mb-2">
+                <div class="container-data">
+                    <div class="row mb-2 table-wrapper-scroll-y my-custom-scrollbar">
                         <table class="table table-hover table-striped ">
                             <thead class="bg-blue-dark text-white text-center">
                                 <tr>
@@ -146,10 +146,17 @@
                                             <input type="text" class="form-control mt-2" id="inp_lastDate" placeholder="Ultimo Movimiento">
                                             <label for="inp_lastDate">Ultimo Movimiento</label>
                                         </div>
-                                        <div class="form-floating mt-3">
+                                        <div class="input-group mt-3">
+                                            <label class="input-group-text" for="inp_mState">Estado</label>
+                                            <select class="form-select" id="inp_mState">
+                                              <option selected>Operativo</option>
+                                              <option value="Dañado">Dañado</option>
+                                            </select>
+                                          </div>
+                                        <!-- <div class="form-floating mt-3">
                                             <input type="text" class="form-control mt-2" id="inp_state" placeholder="Estado">
                                             <label for="inp_state">Estado</label>
-                                        </div>
+                                        </div> -->
                                         
                                         
                                         
