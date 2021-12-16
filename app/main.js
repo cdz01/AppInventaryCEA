@@ -1,4 +1,4 @@
-const { app, BrowserWindow, webContents, ipcMain, Notification } = require("electron");
+const { app, BrowserWindow, webContents, ipcMain, Notification, dialog, ipcRenderer } = require("electron");
 const path = require("path");
 
 // require('@electron/remote/main').initialize()
@@ -30,4 +30,9 @@ ipcMain.on('notification', (event, args) => {
 
 ipcMain.on('notification-delete', (event, args) => {
     new Notification({title: "Inventario CEA", body: "El articulo se ha eliminado correctamente!"}).show();
+})
+
+ipcMain.on('openDialog', (event, args) => {
+    const dir = dialog.showOpenDialogSync(_window, {properties: ['openFile', 'openDirectory']})
+    event.returnValue = dir;
 })

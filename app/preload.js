@@ -1,4 +1,4 @@
-const { ipcRenderer, contextBridge, Notification} = require("electron");
+const { ipcRenderer, contextBridge, dialog} = require("electron");
 const fs = require("fs");
 const path = require("path");
 
@@ -6,11 +6,16 @@ const API = {
     getArticles: () => getArticles(),
     save_articles: (articles) => save_articles(articles),
     delete_one_article: (serial) => delete_one_article(serial),
+    open_dialog: () => open_dialog(),
     test: (t) => { ipcRenderer.send('notification', {body: t}) }
 }
 
 contextBridge.exposeInMainWorld("app", API);
 
+function open_dialog () {
+    const res = ipcRenderer.sendSync('openDialog');
+    return res;
+}
 
 function getArticles() {
     const data = fs.readFileSync(path.join(__dirname, "./articles.json"), { encoding: 'utf8', flag:'r' });
