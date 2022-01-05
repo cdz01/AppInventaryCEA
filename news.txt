@@ -39,3 +39,11 @@
 * fixes *                                                                       /
                                                                                 /
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  /
+
+
+/* * * * * * * * * * * * * * * *  05/01/2022  * * * * * * * * * * * * * * * * * /
+                                                                                /                                                                         /
+* Funcionalidad Imprimir Terminado (Algunos detalles de front de parte del pdf) /
+* Funcionalidad, boton limpiar formulario en guardar articulo, Terminado        /
+* boton agregado Anterior en formulario * sin funcion                           /
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  /

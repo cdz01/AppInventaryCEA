@@ -43,6 +43,16 @@ btn_estadoMenu.forEach(btn => {
     })
 });
 
+$("#btn_clear").click(e => {
+    e.preventDefault();
+
+    $("input").val("");
+    $("textarea").val("");
+    $("#field_state").text("Selecciona el estado");
+    $("#field_departament").text("Selecciona un Departamento");
+    $("#field_category").text("Selecciona una Categoria");
+})
+
 btn_save.addEventListener('click', e => {
     e.preventDefault();
 

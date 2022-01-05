@@ -1,4 +1,7 @@
 const { ipcRenderer, contextBridge, dialog} = require("electron");
+const { jsPDF } = require("jspdf");
+require("jspdf-autotable")
+
 const fs = require("fs");
 const path = require("path");
 
@@ -7,6 +10,7 @@ const API = {
     save_articles: (articles) => save_articles(articles),
     delete_one_article: (serial) => delete_one_article(serial),
     open_dialog: () => open_dialog(),
+    generate_pdf: (dir, name) => generate_pdf(dir, name),
     test: (t) => { ipcRenderer.send('notification', {body: t}) }
 }
 
@@ -15,6 +19,31 @@ contextBridge.exposeInMainWorld("app", API);
 function open_dialog () {
     const res = ipcRenderer.sendSync('openDialog');
     return res;
+}
+
+function generate_pdf(dir, name) {
+    const articles = getArticles();
+    var all_values = [];
+    var fullPath = dir + "\\" + name + ".pdf";
+
+    articles.map((a,i) => {
+        const values = Object.values(a);
+        values.unshift(i+1);
+        all_values.push(values);
+    });
+
+    console.log(all_values)
+    const doc = new jsPDF('p', 'mm', 'a4');
+    
+    doc.text("Inventariado CEA", 20, 20);
+
+    doc.autoTable({
+        head: [['Nº','Departamento', 'Categoria', 'Marca', 'Modelo', 'Cantidad', 'Serial', 'Observacion', 'Ultimo Movimiento', 'Estado']],
+        body: all_values,
+        margin: { top: 30 }
+    })
+    
+    doc.save(fullPath);
 }
 
 function getArticles() {
