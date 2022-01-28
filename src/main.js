@@ -21,7 +21,7 @@ app.on("ready", () => {
     });
     // _window.webContents.openDevTools();
 
-    _window.loadFile(__dirname + "./index.html");
+    _window.loadFile(path.join(__dirname + "/index.html"));
 })
 
 ipcMain.on('notification', (event, args) => {

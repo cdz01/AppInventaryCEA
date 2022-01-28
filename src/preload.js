@@ -5,6 +5,8 @@ require("jspdf-autotable")
 const fs = require("fs");
 const path = require("path");
 
+const PATH_ARTICLES = "C:\\inventario.cea\\articles.json"
+
 const API = {
     getArticles: () => getArticles(),
     save_articles: (articles) => save_articles(articles),
@@ -47,13 +49,13 @@ function generate_pdf(dir, name) {
 }
 
 function getArticles() {
-    const data = fs.readFileSync(path.join(__dirname, "./articles.json"), { encoding: 'utf8', flag:'r' });
+    const data = fs.readFileSync(path.join(PATH_ARTICLES), { encoding: 'utf8', flag:'r' });
     return JSON.parse(data);
 }
 
 function save_articles(articles, option='s') {
     const data = JSON.stringify(articles);
-    const success = fs.writeFileSync(path.join(__dirname, "./articles.json"), data);
+    const success = fs.writeFileSync(path.join(PATH_ARTICLES), data);
     console.log(option)
     switch(option) {
         case 's':
@@ -71,9 +73,3 @@ function delete_one_article(serial) {
     const fArts = arts.filter(art => art.serial !== serial);
     save_articles(fArts, 'd');
 }
-
-// {
-//     "articles": [
-        
-//     ]
-// }
