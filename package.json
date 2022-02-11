@@ -8,7 +8,6 @@
     "build": "electron-builder",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "build": {
     "appId": "Inventario CEA",
     "win": {
@@ -21,22 +20,19 @@
   "nsis": {
     "oneClick": true,
     "installerIcon": "logo.ico",
-    "uninstallerIcon": "logo.ico" ,
+    "uninstallerIcon": "logo.ico",
     "uninstallerDisplayName": "Inventario CEA Desinstalar",
     "license": "license.md",
     "allowToChangeInstallationDirectory": false
   },
-  
   "keywords": [],
   "author": {
     "name": "Carlos Diaz",
     "email": "diazcarl401@gmail.com"
   },
   "license": "license.md",
-
   "dependencies": {
     "@electron/remote": "^2.0.1",
-    
     "jspdf": "^2.4.0",
     "jspdf-autotable": "^3.5.23"
   },

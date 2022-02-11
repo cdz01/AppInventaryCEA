@@ -20,24 +20,24 @@ function mClickDelete () {
     document.querySelector(".btn-warning").addEventListener('click', () => handle_delete());
 }
 
+function extractFromDataToModalForm () {
+    const local_data = getData(dls.article_selected);
+    
+    $(`#inp_mDepartament option[value="${local_data[keys_article.departament]}"]`).attr("selected", true)
+    $(`#inp_mCategory option[value="${local_data[keys_article.category]}"]`).attr("selected", true)
+    $(`#inp_mState option[value="${local_data[keys_article.state]}"]`).attr("selected", true)
+    $("#inp_marca").val(local_data[keys_article.marca]);
+    $("#inp_model").val(local_data[keys_article.model]);
+    $("#inp_amount").val(local_data[keys_article.amount]);
+    $("#inp_serial").val(local_data[keys_article.serial]);
+    $("#inp_view").val(local_data[keys_article.view]);
+    $("#inp_lastDate").val(local_data[keys_article.lastDate]);
+    // $("#inp_state").val(local_data[keys_article.state]);
+}
+
 function mClickUpdate() {
 
     const btn_update = document.querySelector("#btn_update");
-
-    function extractFromDataToModalForm () {
-        const local_data = getData(dls.article_selected);
-        
-        $(`#inp_mDepartament option[value="${local_data[keys_article.departament]}"]`).attr("selected", true)
-        $(`#inp_mCategory option[value="${local_data[keys_article.category]}"]`).attr("selected", true)
-        $(`#inp_mState option[value="${local_data[keys_article.state]}"]`).attr("selected", true)
-        $("#inp_marca").val(local_data[keys_article.marca]);
-        $("#inp_model").val(local_data[keys_article.model]);
-        $("#inp_amount").val(local_data[keys_article.amount]);
-        $("#inp_serial").val(local_data[keys_article.serial]);
-        $("#inp_view").val(local_data[keys_article.view]);
-        $("#inp_lastDate").val(local_data[keys_article.lastDate]);
-        // $("#inp_state").val(local_data[keys_article.state]);
-    }
 
     function update_file() {
         const data = {
@@ -155,7 +155,7 @@ function show_articles(_arts) {
             td_depart.innerText = article.departament;
             td_category.innerText = article.category;
             td_marca.innerText = article.marca;
-            td_model.innerText = article.model;
+            td_model.innerText = article.model != "" ? article.model : "*";
             td_amount.innerText = article.amount;
             td_serial.innerText = article.serial;
             td_view.innerText = article.view;
@@ -217,7 +217,7 @@ function show_articles(_arts) {
             td_depart.innerText = article.departament;
             td_category.innerText = article.category;
             td_marca.innerText = article.marca;
-            td_model.innerText = article.model;
+            td_model.innerText = article.model != "" ? article.model : "*";
             td_amount.innerText = article.amount;
             td_serial.innerText = article.serial;
             td_view.innerText = article.view;
@@ -253,6 +253,7 @@ function handle_click_row (data) {
     /* GUARDA DATA SOBRE EL ARTICULO SELECCIONADO, PARA CUALQUIER USO DESPUES */
     localStorage.setItem("article_selected", JSON.stringify(data));
     document.querySelector("#mbody_serial").innerText = "Serial: " + data.serial;
+    extractFromDataToModalForm();
 }
 
 

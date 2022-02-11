@@ -47,3 +47,10 @@
 * Funcionalidad, boton limpiar formulario en guardar articulo, Terminado        /
 * boton agregado Anterior en formulario * sin funcion                           /
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  /
+
+/* * * * * * * * * * * * * * * *  11/02/2022  * * * * * * * * * * * * * * * * * /
+                                                                                /                                                                         /
+* FIX`s arreglados                                                              /
+* campos sin rellenar, automaticamente se coloca *                              /
+* 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  /

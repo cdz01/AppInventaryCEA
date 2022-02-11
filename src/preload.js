@@ -27,14 +27,20 @@ function generate_pdf(dir, name) {
     const articles = getArticles();
     var all_values = [];
     var fullPath = dir + "\\" + name + ".pdf";
-
+    
+    let valuesCopy = [];
     articles.map((a,i) => {
         const values = Object.values(a);
+        for (let i = 0; i < values.length; i++) {
+            const element = values[i];
+            if (element == "") values[i] = "*";
+        }
         values.unshift(i+1);
+        
         all_values.push(values);
     });
 
-    console.log(all_values)
+    // console.log(all_values)
     const doc = new jsPDF('p', 'mm', 'a4');
     
     doc.text("Inventariado CEA", 20, 20);
